@@ -1,10 +1,15 @@
+
+
 Dado('que acesso a página de cadastro') do
     visit "http://rocklov-db:3000/signup"
 end
   
 Quando('submeto o meu cadastro completo') do
-    find("#fullName").set Faker::Name.name_with_middle
-    find("#email").set Faker::Internet.free_email
+
+    MongoDB.new.remove_user("henrique@gmail.com")    
+
+    find("#fullName").set "Henrique Cervi"
+    find("#email").set "henrique@gmail.com"
     find("#password").set Faker::Internet.password(min_length: 10, max_length: 20, mix_case: true, special_characters: true)
     click_button "Cadastrar"
 end
@@ -17,7 +22,6 @@ Quando('submeto o meu cadastro sem o nome') do
     find("#email").set Faker::Internet.free_email
     find("#password").set Faker::Internet.password(min_length: 10, max_length: 20, mix_case: true, special_characters: true)
     click_button "Cadastrar"
-    sleep 2
 end
 
 Quando('submeto o meu cadastro sem o email') do
