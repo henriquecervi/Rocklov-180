@@ -17,23 +17,35 @@ Cenario: Fazer cadastro
 @tentativa_cadastro
 Cenario: Submeter cadastro sem o nome
     Dado que acesso a página de cadastro
-    Quando submeto o meu cadastro sem o nome
+     Quando submeto o seguinte formulário de cadastro:
+    | name     | email              | password  |
+    |          | henrique@gmail.com | pwd123    |
+    |          | bruna@gmail.com    | pwd123    |
     Então vejo a mensagem de alerta: "Oops. Informe seu nome completo!"
 
 @tentativa_cadastro
 Cenario: Submeter cadastro sem o email
     Dado que acesso a página de cadastro
-    Quando submeto o meu cadastro sem o email
+     Quando submeto o seguinte formulário de cadastro:
+    | name     | email | password  |
+    | Henrique |       | pwd123    |
+    | Bruna    |       | pwd123    |
     Então vejo a mensagem de alerta: "Oops. Informe um email válido!"
 
 @tentativa_cadastro
 Cenario: Submeter cadastro com email incorreto
     Dado que acesso a página de cadastro
-    Quando submeto o meu cadastro com email incorreto
+     Quando submeto o seguinte formulário de cadastro:
+    | name     | email              | password  |
+    | Henrique | henrique#gmail.com | pwd123    |
+    | Bruna    | bruna%gmail.com    | pwd123    |
     Então vejo a mensagem de alerta: "Oops. Informe um email válido!"
 
 @tentativa_cadastro
 Cenario: Submeter cadastro sem a senha
     Dado que acesso a página de cadastro
-    Quando submeto o meu cadastro sem a senha
+    Quando submeto o seguinte formulário de cadastro:
+    | name     | email              | password  |
+    | Henrique | henrique@gmail.com |           |
+    | Bruna    | bruna@gmail.com    |           |
     Então vejo a mensagem de alerta: "Oops. Informe sua senha secreta!"
