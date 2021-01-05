@@ -15,37 +15,17 @@ Cenario: Fazer cadastro
     Então sou redirecionado para o Dashboard
 
 @tentativa_cadastro
-Cenario: Submeter cadastro sem o nome
-    Dado que acesso a página de cadastro
-     Quando submeto o seguinte formulário de cadastro:
-    | name     | email              | password  |
-    |          | henrique@gmail.com | pwd123    |
-    |          | bruna@gmail.com    | pwd123    |
-    Então vejo a mensagem de alerta: "Oops. Informe seu nome completo!"
-
-@tentativa_cadastro
-Cenario: Submeter cadastro sem o email
-    Dado que acesso a página de cadastro
-     Quando submeto o seguinte formulário de cadastro:
-    | name     | email | password  |
-    | Henrique |       | pwd123    |
-    | Bruna    |       | pwd123    |
-    Então vejo a mensagem de alerta: "Oops. Informe um email válido!"
-
-@tentativa_cadastro
-Cenario: Submeter cadastro com email incorreto
-    Dado que acesso a página de cadastro
-     Quando submeto o seguinte formulário de cadastro:
-    | name     | email              | password  |
-    | Henrique | henrique#gmail.com | pwd123    |
-    | Bruna    | bruna%gmail.com    | pwd123    |
-    Então vejo a mensagem de alerta: "Oops. Informe um email válido!"
-
-@tentativa_cadastro
-Cenario: Submeter cadastro sem a senha
+Esquema do Cenario: Tentativa de Cadastro
     Dado que acesso a página de cadastro
     Quando submeto o seguinte formulário de cadastro:
-    | name     | email              | password  |
-    | Henrique | henrique@gmail.com |           |
-    | Bruna    | bruna@gmail.com    |           |
-    Então vejo a mensagem de alerta: "Oops. Informe sua senha secreta!"
+    | name         | email         | password         |
+    | <name_input> | <email_input> | <password_input> |    
+    Então vejo a mensagem de alerta: "<msg_output>"
+
+    Exemplos:
+    | name_input | email_input        | password_input | msg_output                       |
+    |            | henrique@gmail.com | pwd123         | Oops. Informe seu nome completo! |   
+    | Henrique   |                    | pwd123         | Oops. Informe um email válido!   |   
+    | Bruna      | bruna#gmail.com    | pwd123         | Oops. Informe um email válido!   |  
+    | Henrique   | henrique!gmail.com | pwd123         | Oops. Informe um email válido!   | 
+    | Henrique   | henrique@gmail.com |                | Oops. Informe sua senha secreta! | 
