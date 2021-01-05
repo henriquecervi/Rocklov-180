@@ -5,7 +5,7 @@ Funcionalidade: Cadastro
     Quero fazer o meu cadastro no RockLov
     Para que eu possa disponibilizá-los para locação
 
-@temp
+@feliz
 Cenario: Fazer cadastro
     Dado que acesso a página de cadastro
     Quando submeto o meu cadastro completo
@@ -17,17 +17,20 @@ Cenario: Submeter cadastro sem o nome
     Quando submeto o meu cadastro sem o nome
     Então vejo a mensagem de alerta: "Oops. Informe seu nome completo!"
 
+@sem_email
 Cenario: Submeter cadastro sem o email
     Dado que acesso a página de cadastro
     Quando submeto o meu cadastro sem o email
-    Então vejo a mensagem de alerta: Oops. Informe um email válido!
+    Então vejo a mensagem de alerta: "Oops. Informe um email válido!"
 
+@email_incorreto
 Cenario: Submeter cadastro com email incorreto
     Dado que acesso a página de cadastro
-    Quando submeto o meu cadastro com incorreto
-    Então vejo a mensagem de alerta: Oops. Informe um email válido!
+    Quando submeto o meu cadastro com email incorreto
+    Então vejo a mensagem de alerta: "Oops. Informe um email válido!"
 
+@sem_senha
 Cenario: Submeter cadastro sem a senha
     Dado que acesso a página de cadastro
     Quando submeto o meu cadastro sem a senha
-    Então vejo a mensagem de alerta: Oops. Informe sua senha secreta!
+    Então vejo a mensagem de alerta: "Oops. Informe sua senha secreta!"
