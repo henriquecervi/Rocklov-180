@@ -3,9 +3,9 @@ Dado('que acesso a página de cadastro') do
 end
   
 Quando('submeto o meu cadastro completo') do
-    find("#fullName").set "Henrique Cervi"
-    find("#email").set "henrique@gmail.com"
-    find("#password").set "123456"
+    find("#fullName").set Faker::Name.name_with_middle
+    find("#email").set Faker::Internet.free_email
+    find("#password").set Faker::Internet.password(min_length: 10, max_length: 20, mix_case: true, special_characters: true)
     click_button "Cadastrar"
 end
   
