@@ -3,15 +3,18 @@
 Dado('que acesso a página de cadastro') do
     visit "http://rocklov-db:3000/signup"
 end
-  
-Quando('submeto o meu cadastro completo') do
 
-    MongoDB.new.remove_user("henrique@gmail.com")    
+Quando('submeto o seguinte formulário de cadastro:') do |table|
 
-    find("#fullName").set "Henrique Cervi"
-    find("#email").set "henrique@gmail.com"
-    find("#password").set Faker::Internet.password(min_length: 10, max_length: 20, mix_case: true, special_characters: true)
+    user = table.hashes.last
+
+    MongoDB.new.remove_user(user[:email])        
+
+    find("#fullName").set user[:name]
+    find("#email").set user[:email]
+    find("#password").set user[:password]
     click_button "Cadastrar"
+    
 end
   
 Então('sou redirecionado para o Dashboard') do
