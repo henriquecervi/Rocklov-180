@@ -6,7 +6,7 @@ end
 
 Quando('submeto o seguinte formulário de cadastro:') do |table|
 
-    user = table.hashes.last
+    user = table.hashes.first
 
     MongoDB.new.remove_user(user[:email])        
 
@@ -16,13 +16,4 @@ Quando('submeto o seguinte formulário de cadastro:') do |table|
     click_button "Cadastrar"
     
 end
-  
-Então('sou redirecionado para o Dashboard') do
-    expect(page).to have_css ".dashboard"
-end
-  
-Então('vejo a mensagem de alerta: {string}') do |validacao|
-   alert = find('.alert-dark') #encontrando a classe que estamos buscando.
-   expect(alert.text).to eql validacao #utilizamos o .text para "puxar" o texto que temos dentro da classe e assim conseguimos efetuar à validação
-end
-
+    
