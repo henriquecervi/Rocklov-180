@@ -11,6 +11,12 @@ class MongoDB
         users.delete_many({email: email})
     end
 
+    # def remove_anuncio(nome)
+    #     client = Mongo::Client.new('mongodb://rocklov-db:27017/rocklov')
+    #     anuncios = client[:anuncios]
+    #     anuncios.delete_many({nome: nome})
+    # end
+
 end
 
 
