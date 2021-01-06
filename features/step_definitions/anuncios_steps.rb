@@ -1,4 +1,6 @@
 Dado('que estou logado como {string} e {string}') do |email, password|
+    @email = email
+
     visit "/"
     find("input[placeholder='Seu e-email']").set email
     find("input[type=password]").set password
@@ -15,7 +17,7 @@ Dado('que eu tenho o seguinte equipamento:') do |table|
     #o @ serve para instanciar a variável.
     @anuncio = table.rows_hash
     #estamos utilizando o rows pois estamos fazendo tabela com, chave e valor  
-    # MongoDB.new.remove_user(user[:email])  
+    MongoDB.new.remove_equipo(@anuncio[:nome], @email)  
 end
     
 Quando('submeto o cadastro desse item') do
