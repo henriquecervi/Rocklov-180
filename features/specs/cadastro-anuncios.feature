@@ -27,14 +27,16 @@ Funcionalidade: Cadastro de Anúncios
             | thumb     | <foto>      |
             | nome      | <nome>      |
             | categoria | <categoria> |
-            | preco     | <preco> |
+            | preco     | <preco>     |
         Quando submeto o cadastro desse item
         Então deve conter a mensagem de alerta: "<saida>"
 
         Exemplos:
 
-            | foto         | nome     | categoria | preco | saida                             |
-            |              | Kamer    | Cordas    | 200   | Adicione uma foto no seu anúncio! |
-            | conga.jpg    |          | Baterias  | 120   | Informe a descrição do anúncio!   |
-            | trompete.jpg | Trompete |           | 450   | Informe a categoria               |
-            | sanfona.jpg  | Sanfona  | Teclas    |       | Informe o valor da diária         |
+            | foto         | nome      | categoria | preco | saida                                |
+            |              | Kamer     | Cordas    | 200   | Adicione uma foto no seu anúncio!    |
+            | conga.jpg    |           | Baterias  | 120   | Informe a descrição do anúncio!      |
+            | trompete.jpg | Trompete  |           | 450   | Informe a categoria                  |
+            | sanfona.jpg  | Sanfona   | Teclas    |       | Informe o valor da diária            |
+            | mic.jpg      | Microfone | Outros    | 100a  | O valor da diária deve ser numérico! |
+            | violino.jpg  | Violino   | Outros    | abc   | O valor da diária deve ser numérico! |
