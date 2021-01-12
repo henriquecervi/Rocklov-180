@@ -1,0 +1,3 @@
+---
+  url: http://rocklov.hlg:3000
+  mongo: mongodb://usuario@senha:200.167.20.15:27017/rocklov
