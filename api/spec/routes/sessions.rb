@@ -1,9 +1,6 @@
-require "httparty"
+require_relative "base_api"
 
-class Sessions
-  include HTTParty
-  base_uri "http://rocklov-api:3333"
-
+class Sessions < BaseApi
   def login(payload)
 
     #self.class é ter acesso aos objetos da própria classe
