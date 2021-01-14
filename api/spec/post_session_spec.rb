@@ -18,17 +18,58 @@ describe "POST /sessions" do
     end
   end
 
-  context "senha invalida" do
-    before(:all) do
-      payload = { email: "henrique@gmail.com.br", password: "12345" }
-      @result = Sessions.new.login(payload)
-    end
-    it "valida status code" do
-      expect(@result.code).to eql 401
-    end
+  examples = [
+    {
+      title: "senha incorreta",
+      payload: { email: "henrique@gmail.com.br", password: "12345" },
+      code: 401,
+      error: "Unauthorized",
+    },
+    {
+      title: "email invalido",
+      payload: { email: "404@gmail.com.br", password: "12345" },
+      code: 401,
+      error: "Unauthorized",
+    },
+    {
+      title: "email nao preenchido",
+      payload: { email: "", password: "12345" },
+      code: 412,
+      error: "required email",
+    },
+    {
+      title: "sem o campo email",
+      payload: { password: "12345" },
+      code: 412,
+      error: "required email",
+    },
+    {
+      title: "senha nao preenchida",
+      payload: { email: "henrique@gmail.com.br", password: "" },
+      code: 412,
+      error: "required password",
+    },
+    {
+      title: "sem o campo senha",
+      payload: { email: "henrique@gmail.com.br" },
+      code: 412,
+      error: "required password",
+    },
 
-    it "valida msg de retorno" do
-      expect(@result.parsed_response["error"]).to eql "Unauthorized"
+  ]
+
+  examples.each do |e|
+    context "#{e[:title]}" do
+      before(:all) do
+        @result = Sessions.new.login(e[:payload])
+      end
+      it "valida status code #{e[:code]}" do
+        expect(@result.code).to eql e[:code]
+      end
+
+      it "valida msg de retorno" do
+        expect(@result.parsed_response["error"]).to eql e[:error]
+      end
     end
   end
 end
