@@ -1,4 +1,5 @@
 require_relative "routes/sessions"
+require_relative "helpers"
 
 #suit
 describe "POST /sessions" do
@@ -18,45 +19,54 @@ describe "POST /sessions" do
     end
   end
 
-  examples = [
-    {
-      title: "senha incorreta",
-      payload: { email: "henrique@gmail.com.br", password: "12345" },
-      code: 401,
-      error: "Unauthorized",
-    },
-    {
-      title: "email invalido",
-      payload: { email: "404@gmail.com.br", password: "12345" },
-      code: 401,
-      error: "Unauthorized",
-    },
-    {
-      title: "email nao preenchido",
-      payload: { email: "", password: "12345" },
-      code: 412,
-      error: "required email",
-    },
-    {
-      title: "sem o campo email",
-      payload: { password: "12345" },
-      code: 412,
-      error: "required email",
-    },
-    {
-      title: "senha nao preenchida",
-      payload: { email: "henrique@gmail.com.br", password: "" },
-      code: 412,
-      error: "required password",
-    },
-    {
-      title: "sem o campo senha",
-      payload: { email: "henrique@gmail.com.br" },
-      code: 412,
-      error: "required password",
-    },
+  # examples = [
+  #   {
+  #     title: "senha incorreta",
+  #     payload: { email: "henrique@gmail.com.br", password: "12345" },
+  #     code: 401,
+  #     error: "Unauthorized",
+  #   },
+  #   {
+  #     title: "email invalido",
+  #     payload: { email: "404@gmail.com.br", password: "12345" },
+  #     code: 401,
+  #     error: "Unauthorized",
+  #   },
+  #   {
+  #     title: "email nao preenchido",
+  #     payload: { email: "", password: "12345" },
+  #     code: 412,
+  #     error: "required email",
+  #   },
+  #   {
+  #     title: "sem o campo email",
+  #     payload: { password: "12345" },
+  #     code: 412,
+  #     error: "required email",
+  #   },
+  #   {
+  #     title: "senha nao preenchida",
+  #     payload: { email: "henrique@gmail.com.br", password: "" },
+  #     code: 412,
+  #     error: "required password",
+  #   },
+  #   {
+  #     title: "sem o campo senha",
+  #     payload: { email: "henrique@gmail.com.br" },
+  #     code: 412,
+  #     error: "required password",
+  #   },
 
-  ]
+  # ]
+
+  # utilizamos o comando abaixo para sair em formato json no cmder e
+  # após isso pegamos o valor e jogamos no site json2yaml e temos a massa pronta.
+  # puts examples.to_json
+
+  examples = Helpers::get_fixtures("login")
+  # fizemos o require relative no começo do arquivo para poder trabalhar com o Helpers e
+  # na sequência utilizamos o modulo que criamos, agora se tivermos outra massa em outro arquivo
+  # é só puxar pelo outro nome ex: examples = Helpers::get_fixtures("cadastro")
 
   examples.each do |e|
     context "#{e[:title]}" do

@@ -1,0 +1,35 @@
+---
+- title: senha incorreta
+  payload:
+    email: henrique@gmail.com.br
+    password: '12345'
+  code: 401
+  error: Unauthorized
+- title: email invalido
+  payload:
+    email: 404@gmail.com.br
+    password: '12345'
+  code: 401
+  error: Unauthorized
+- title: email nao preenchido
+  payload:
+    email: ''
+    password: '12345'
+  code: 412
+  error: required email
+- title: sem o campo email
+  payload:
+    password: '12345'
+  code: 412
+  error: required email
+- title: senha nao preenchida
+  payload:
+    email: henrique@gmail.com.br
+    password: ''
+  code: 412
+  error: required password
+- title: sem o campo senha
+  payload:
+    email: henrique@gmail.com.br
+  code: 412
+  error: required password
