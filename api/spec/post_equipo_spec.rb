@@ -6,7 +6,9 @@ describe "POST /equipos" do
   end
 
   context "novo equipo" do
-    thumbnail = File.open(File.join(Dir.pwd, "spec/fixtures/images", "kramer.jpg"))
+    thumbnail = File.open(File.join(Dir.pwd, "spec/fixtures/images", "kramer.jpg"), "rb")
+    # o "rb" quer dizer que ele deve ler somente no formato binario
+    # sem ele, a imagem enviada para a requisição está vazia.
     before(:all) do
       payload = {
         thumbnail: thumbnail,
