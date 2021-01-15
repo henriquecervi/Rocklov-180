@@ -25,4 +25,8 @@ class MongoDB
     object_id = BSON::ObjectId.from_string(user_id)
     @equipos.delete_many({ name: name, user: object_id })
   end
+
+  def get_mongo_id
+    return BSON::ObjectId.new
+  end
 end
