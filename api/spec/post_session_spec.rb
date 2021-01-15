@@ -1,6 +1,3 @@
-require_relative "routes/sessions"
-require_relative "helpers"
-
 #suit
 describe "POST /sessions" do
   context "login com sucesso" do
