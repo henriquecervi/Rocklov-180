@@ -1,0 +1,22 @@
+---
+- title: name e obrigatorio
+  payload:
+    name: ""
+    email: henrique@gmail.com.br
+    password: '12345'
+  code: 412
+  error: required name
+- title: email e obrigatorio
+  payload:
+    name: "Henrique Cervi"
+    email: ""
+    password: '12345'
+  code: 412
+  error: required email
+- title: password e obrigatorio
+  payload:
+    name: "Zeca"
+    email: 'zeca@gmail.com'
+    password: ''
+  code: 412
+  error: required password
