@@ -8,7 +8,7 @@ Funcionalidade: Login
     @login
     Cenario: Login do usuário
         Dado que acesso a página principal
-        Quando submeto minhas credenciais com "henrique@gmail.com.br" e "pwd123"
+        Quando submeto minhas credenciais com "henrique@yahoo.com" e "pwd123"
         Então sou redirecionado para o Dashboard
     
 

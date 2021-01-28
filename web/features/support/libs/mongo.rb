@@ -3,12 +3,20 @@ require "mongo"
 Mongo::Logger.logger = Logger.new("./logs/mongo.log")
 
 class MongoDB
-  attr_accessor :users, :equipos #< são as collections do mongo
+  attr_accessor :client, :users, :equipos #< são as collections do mongo
 
   def initialize #já inicializa
-    client = Mongo::Client.new(CONFIG["mongo"])
+    @client = Mongo::Client.new(CONFIG["mongo"])
     @users = client[:users]
     @equipos = client[:equipos] #equipos é o nome da collection do MONGODB que estamos manipulando!
+  end
+
+  def drop_danger
+    @client.database.drop
+  end
+
+  def insert_users(docs)
+    @users.insert_many(docs)
   end
 
   def remove_user(email)

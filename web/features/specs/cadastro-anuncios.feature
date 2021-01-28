@@ -6,7 +6,7 @@ Funcionalidade: Cadastro de Anúncios
     Para que eu possa disponibilizados para locação
 
     Contexto: Login
-        * Login com "henrique@gmail.com.br" e "pwd123"
+        * Login com "henrique@yahoo.com.br" e "pwd123"
 
     Cenario: Novo equipo
         Dado que acesso o formulario de cadastro de anúncios
