@@ -28,4 +28,8 @@ class DashPage
   def confirm_removal
     click_on "Sim"
   end
+
+  def cancel_removal
+    click_on "Não"
+  end
 end
