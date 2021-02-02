@@ -3,6 +3,7 @@ Dado("Login com {string} e {string}") do |email, password|
 
   @login_page.open
   @login_page.with(email, password)
+  expect(@dash_page.on_dash?).to be true
 end
 
 Dado("que acesso o formulario de cadastro de anúncios") do
@@ -27,4 +28,22 @@ end
 
 Então("deve conter a mensagem de alerta: {string}") do |validacao|
   expect(@alert.dark).to have_text validacao
+end
+
+# remover anúncios
+
+Dado("que eu tenho um anúncio indesejado:") do |table|
+  user_id = page.execute_script("return localStorage.getItem('user')")
+end
+
+Quando("eu solicito a exclusão desse item") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Quando("confirmo a exclusão") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Então("não devo ver esse item no meu Dashboard") do
+  pending # Write code here that turns the phrase above into concrete actions
 end

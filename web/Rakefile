@@ -12,12 +12,13 @@ task :local_seeds do
   users = [
     { name: "Henrique", email: "henrique@yahoo.com.br", password: to_md5("pwd123") },
     { name: "Henrique", email: "henrique@yahoo.com", password: to_md5("pwd123") },
+    { name: "Erro", email: "erro@yahoo.com", password: to_md5("pwd123") },
   ]
 
   MongoDB.new.drop_danger
   MongoDB.new.insert_users(users)
 
-  sh "cucumber"
+  # sh "cucumber"
 end
 
 task :hlg_seeds do
@@ -26,6 +27,7 @@ task :hlg_seeds do
   users = [
     { name: "Henrique", email: "henrique@yahoo.com.br", password: to_md5("pwd123") },
     { name: "Henrique", email: "henrique@yahoo.com", password: to_md5("pwd123") },
+    { name: "Erro", email: "erro@yahoo.com", password: to_md5("pwd123") },
   ]
 
   MongoDB.new.drop_danger
