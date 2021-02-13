@@ -8,12 +8,12 @@ pipeline {
     stages {
         stage('Preparando Ambiente') {
             steps {
-                sh 'bundle install'
+                sh 'cd api && bundle install'
             }
         }
         stage('Testando') {
             steps {
-                sh 'rspec'
+                sh 'cd api && rspec'
             }
         }
     }
