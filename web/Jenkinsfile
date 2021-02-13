@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'ruby'
+            image 'henriquecervi/ruby-web-agent'
             args '--network rocklov-network'
         }
     }
@@ -14,13 +14,13 @@ pipeline {
         }
         stage('Testando') {
             steps {
-                sh 'cd web && cucumber'                
+                sh 'cd web && rake local_seeds'                
             }
         }
     }
     post{
         always {
-            junit 'web/logs/result.json'
+            echo "todo"
         }
     }
 }
