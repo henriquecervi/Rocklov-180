@@ -9,14 +9,14 @@ Funcionalidade: Receber pedido de locação
 
         Dado que meu perfil de anunciante é "joao@anunciante.com" e "pwd123"
             E que eu tenho o seguinte equipamento cadastrado:
-            | thumb     | trompete.jpg |
-            | nome      | Trompete     |
-            | categoria | Outros       |
-            | preco     | 100          |
+            | thumb     | mic.jpg |
+            | nome      | Mic     |
+            | categoria | Outros  |
+            | preco     | 100     |
             E acesso o meu dashboard
         Quando "maria@locataria.com" e "pwd123" solicita a locação desse equipo
         Então devo ver a seguinte mensagem:
             """
-            maria@locataria.com deseja alugar o equipamento: Trompete em: DATA_ATUAL
+            maria@locataria.com deseja alugar o equipamento: Mic em: DATA_ATUAL
             """
             E devo ver os links: "ACEITAR" e "REJEITAR" no pedido

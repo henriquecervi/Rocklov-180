@@ -1,6 +1,6 @@
 require_relative "base_service"
 
-class SessionService < BaseService
+class SessionsService < BaseService
   def get_user_id(email, password)
     payload = { email: email, password: password }
     result = self.class.post(
