@@ -1,0 +1,20 @@
+pipeline {
+    agent {
+        docker {
+            image 'ruby'
+        }
+    }
+
+    stages {
+        stage('Preparando Ambiente') {
+            steps {
+                sh 'bundle install'
+            }
+        }
+        stage('Testando') {
+            steps {
+                sh 'rspec'
+            }
+        }
+    }
+}
